@@ -28,7 +28,7 @@ class MembersController < ApplicationController
 
     success = @member.save
     respond_to do |format|
-      format.json { render json: success ? @member : {errors: @member.errors.messages} }
+      format.json { json_response @member, :created }
     end
   end
 
@@ -36,7 +36,7 @@ class MembersController < ApplicationController
     success = @member.update(member_params)
 
     respond_to do |format|
-      format.json { render json: (success ? @member : {errors: @member.errors.messages}) }
+      format.json { json_response @member }
     end
   end
 
